@@ -1,7 +1,8 @@
 // 🎮 Guess The Word Game (Responsive Version)
 // Author: Ekjot Kaur
-// Description: A Flutter-based hangman-style game with sounds, animations,
-// motivational messages, and fully responsive UI for web and mobile.
+// Description: A Flutter-based hangman-style guessing game with animations,
+// motivational messages, and responsive UI for web & mobile. Features dynamic
+// buttons — "Next ▶️" when you win, and "Play Again 🔁" when you lose.
 
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ void main() {
   runApp(const GuessWordApp());
 }
 
-// Root widget of the app
+// 🌟 Root widget of the app
 class GuessWordApp extends StatelessWidget {
   const GuessWordApp({super.key});
 
@@ -26,7 +27,7 @@ class GuessWordApp extends StatelessWidget {
   }
 }
 
-// Main StatefulWidget managing the game logic and UI
+// 🧠 Main StatefulWidget: manages logic, user interaction, and animations
 class GuessWordGame extends StatefulWidget {
   const GuessWordGame({super.key});
 
@@ -34,10 +35,10 @@ class GuessWordGame extends StatefulWidget {
   State<GuessWordGame> createState() => _GuessWordGameState();
 }
 
-// Game logic and UI implementation
+// 🎯 State class implementing all gameplay logic
 class _GuessWordGameState extends State<GuessWordGame>
     with SingleTickerProviderStateMixin {
-  // --- WORD BANK ---
+  // --- WORD BANK (random selection each round) ---
   final List<String> _words = [
     'FLUTTER',
     'APPLE',
@@ -52,7 +53,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     'CHROME'
   ];
 
-  // --- MOTIVATIONAL MESSAGES ---
+  // --- MOTIVATIONAL MESSAGES (shown after win/loss) ---
   final List<String> _motivations = [
     'Keep going! You’ll get it next time 💪',
     'Don’t give up, champion 🌟',
@@ -63,39 +64,38 @@ class _GuessWordGameState extends State<GuessWordGame>
   ];
 
   // --- GAME STATE VARIABLES ---
-  late String _selectedWord; // The random word to guess
-  final List<String> _guessedLetters = []; // Player’s guessed letters
-  int _wrongGuesses = 0; // Number of incorrect guesses
+  late String _selectedWord; // Word to guess for the round
+  final List<String> _guessedLetters = []; // Letters guessed by player
+  int _wrongGuesses = 0; // Incorrect attempts
   final int _maxWrongGuesses = 6; // Allowed wrong attempts
-  int _wins = 0; // Total wins
-  int _losses = 0; // Total losses
-  String _motivation = ''; // Message after win/loss
-  bool _gameOver = false; // Whether current round ended
+  int _wins = 0; // Total wins across rounds
+  int _losses = 0; // Total losses across rounds
+  String _motivation = ''; // Message shown at end of round
+  bool _gameOver = false; // Flag for end of round
 
-  // --- AUDIO AND ANIMATION ---
-  final AudioPlayer _player = AudioPlayer(); // For success/fail sound effects
+  // --- AUDIO & ANIMATION VARIABLES ---
+  final AudioPlayer _player = AudioPlayer(); // Sound effects
   late final AnimationController _controller;
-  late final Animation<double> _fadeAnimation; // Fade-in for result message
+  late final Animation<double> _fadeAnimation; // Fade-in effect for results
 
   @override
   void initState() {
     super.initState();
 
-    // Initialize animation controller
+    // 🎬 Initialize animation controller for fade-in result text
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
 
-    // Smooth fade animation curve
     _fadeAnimation =
         CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack);
 
-    // Start the first round
+    // Start first round
     _resetGame();
   }
 
-  // Resets the game for a new round
+  // 🔁 Resets game for a new round
   void _resetGame() {
     setState(() {
       _selectedWord = _words[Random().nextInt(_words.length)];
@@ -108,24 +108,26 @@ class _GuessWordGameState extends State<GuessWordGame>
     });
   }
 
-  // Handles user letter guesses
+  // 🅰️ Handles letter button press by player
   void _guessLetter(String letter) {
+    // Ignore if already guessed or round ended
     if (_guessedLetters.contains(letter) || _gameOver) return;
 
     setState(() {
       _guessedLetters.add(letter);
 
-      // If wrong letter → increase wrong count
+      // Wrong guess → increment counter
       if (!_selectedWord.contains(letter)) {
         _wrongGuesses++;
       }
 
-      // Check win/loss conditions
+      // Check win/loss
       if (_isWinner || _isLoser) {
         _motivation = _motivations[Random().nextInt(_motivations.length)];
         _controller.forward();
         _gameOver = true;
 
+        // Play corresponding sound
         if (_isWinner) {
           _wins++;
           _playSound('success.wav');
@@ -137,16 +139,16 @@ class _GuessWordGameState extends State<GuessWordGame>
     });
   }
 
-  // Plays sound from assets (success/fail)
+  // 🔊 Play sound (from assets folder)
   Future<void> _playSound(String fileName) async {
     await _player.play(AssetSource(fileName));
   }
 
-  // Check if user has guessed all letters
+  // 🏆 Win condition → all letters guessed
   bool get _isWinner =>
       _selectedWord.split('').every((letter) => _guessedLetters.contains(letter));
 
-  // Check if user has exceeded max wrong guesses
+  // 💀 Lose condition → max wrong guesses reached
   bool get _isLoser => _wrongGuesses >= _maxWrongGuesses;
 
   @override
@@ -158,18 +160,17 @@ class _GuessWordGameState extends State<GuessWordGame>
 
   @override
   Widget build(BuildContext context) {
-    // --- RESPONSIVE SETTINGS ---
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.width < 500;
 
-    // Build word display (e.g., "_ _ A _ _ E")
+    // Build hidden word display (like "_ _ A _ _ E")
     final displayWord = _selectedWord.split('').map((letter) {
       return _guessedLetters.contains(letter) ? letter : '_';
     }).join(' ');
 
     return Scaffold(
       body: Container(
-        // Background gradient for better visual
+        // 🌈 Gradient background for techy look
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFF6D83F2), Color(0xFFB77DE0)],
@@ -179,13 +180,12 @@ class _GuessWordGameState extends State<GuessWordGame>
         ),
         child: Center(
           child: SingleChildScrollView(
-            // Add padding dynamically for different screens
             padding: EdgeInsets.symmetric(
               horizontal: isSmallScreen ? 12 : 24,
               vertical: isSmallScreen ? 10 : 20,
             ),
             child: Container(
-              // Card container (adjusts based on device width)
+              // 🧩 Card container for main content
               width: isSmallScreen ? size.width * 0.95 : 450,
               padding: EdgeInsets.symmetric(
                 vertical: isSmallScreen ? 20 : 35,
@@ -204,14 +204,14 @@ class _GuessWordGameState extends State<GuessWordGame>
                 ],
               ),
 
-              // --- MAIN COLUMN CONTENT ---
+              // --- 📜 MAIN COLUMN CONTENT ---
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Icon(Icons.lightbulb, color: Colors.amber, size: 40),
                   const SizedBox(height: 10),
 
-                  // Game title
+                  // Title text
                   Text(
                     'Guess The Word',
                     textAlign: TextAlign.center,
@@ -219,21 +219,19 @@ class _GuessWordGameState extends State<GuessWordGame>
                       fontSize: isSmallScreen ? 26 : 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      shadows: const [
-                        Shadow(blurRadius: 10, color: Colors.black45),
-                      ],
+                      shadows: const [Shadow(blurRadius: 10, color: Colors.black45)],
                     ),
                   ),
 
                   const SizedBox(height: 10),
-                  _buildScoreRow(isSmallScreen), // Scoreboard widget
+                  _buildScoreRow(isSmallScreen), // 🏅 Scoreboard (wins/losses)
                   const Divider(color: Colors.white24, thickness: 1, height: 25),
 
-                  // Display hidden or revealed word
+                  // ✏️ Word display (underscores or letters)
                   _buildWordDisplay(displayWord, isSmallScreen),
                   const SizedBox(height: 12),
 
-                  // Wrong guess tracker
+                  // ❌ Wrong guess tracker
                   Text(
                     'Wrong guesses: $_wrongGuesses / $_maxWrongGuesses',
                     style: TextStyle(
@@ -244,7 +242,7 @@ class _GuessWordGameState extends State<GuessWordGame>
 
                   const SizedBox(height: 6),
 
-                  // Show letters already guessed
+                  // 🧩 Already guessed letters
                   Text(
                     'Guessed: ${_guessedLetters.join(', ')}',
                     textAlign: TextAlign.center,
@@ -256,13 +254,13 @@ class _GuessWordGameState extends State<GuessWordGame>
                   ),
                   const SizedBox(height: 25),
 
-                  // --- GAME RESULT AREA ---
+                  // --- 🎬 GAME RESULT AREA ---
                   if (_gameOver)
                     FadeTransition(
                       opacity: _fadeAnimation,
                       child: Column(
                         children: [
-                          // Win screen
+                          // 🥳 Winner screen
                           if (_isWinner)
                             Text(
                               '🎉 YOU WON!',
@@ -275,7 +273,7 @@ class _GuessWordGameState extends State<GuessWordGame>
                                 ],
                               ),
                             )
-                          // Lose screen
+                          // 💀 Loser screen
                           else
                             Column(
                               children: [
@@ -301,9 +299,10 @@ class _GuessWordGameState extends State<GuessWordGame>
                                 ),
                               ],
                             ),
+
                           const SizedBox(height: 15),
 
-                          // Motivational text
+                          // 🌟 Motivational quote
                           Text(
                             _motivation,
                             textAlign: TextAlign.center,
@@ -316,29 +315,33 @@ class _GuessWordGameState extends State<GuessWordGame>
 
                           const SizedBox(height: 25),
 
-                          // Play Again Button
+                          // ✅ Button changes text and color dynamically
                           ElevatedButton(
-                            onPressed: _resetGame,
+                            onPressed: _resetGame, // Resets or loads next word
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.amber,
+                              backgroundColor:
+                                  _isWinner ? Colors.greenAccent : Colors.amber,
                               padding: EdgeInsets.symmetric(
                                 horizontal: isSmallScreen ? 30 : 40,
                                 vertical: isSmallScreen ? 12 : 16,
                               ),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                             ),
                             child: Text(
-                              '🔁 Play Again',
+                              _isWinner ? '▶️ Next' : '🔁 Play Again',
                               style: TextStyle(
-                                  fontSize: isSmallScreen ? 18 : 20,
-                                  color: Colors.white),
+                                fontSize: isSmallScreen ? 18 : 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     )
-                  // --- ACTIVE GAME KEYBOARD ---
+                  // --- ⌨️ ACTIVE GAME KEYBOARD ---
                   else
                     Column(
                       children: [
@@ -356,9 +359,8 @@ class _GuessWordGameState extends State<GuessWordGame>
                                 bool guessed =
                                     _guessedLetters.contains(letter);
                                 return ElevatedButton(
-                                  onPressed: guessed
-                                      ? null
-                                      : () => _guessLetter(letter),
+                                  onPressed:
+                                      guessed ? null : () => _guessLetter(letter),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: guessed
                                         ? Colors.white.withValues(alpha: 0.25)
@@ -390,7 +392,7 @@ class _GuessWordGameState extends State<GuessWordGame>
                   const SizedBox(height: 25),
                   const Divider(color: Colors.white24, thickness: 1, height: 20),
 
-                  // Footer credits
+                  // 👩‍💻 Footer credit
                   const Text(
                     "Made with 💙 in Flutter by Ekjot Kaur",
                     style: TextStyle(
@@ -408,7 +410,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     );
   }
 
-  // --- SCOREBOARD WIDGET ---
+  // 🏅 SCOREBOARD WIDGET
   Widget _buildScoreRow(bool isSmall) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
@@ -428,7 +430,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     );
   }
 
-  // --- DISPLAY WORD SECTION ---
+  // 🔠 WORD DISPLAY SECTION
   Widget _buildWordDisplay(String displayWord, bool isSmall) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
@@ -451,9 +453,7 @@ class _GuessWordGameState extends State<GuessWordGame>
           fontSize: isSmall ? 26 : 30,
           color: Colors.amberAccent,
           fontWeight: FontWeight.w700,
-          shadows: const [
-            Shadow(blurRadius: 8, color: Colors.black45),
-          ],
+          shadows: const [Shadow(blurRadius: 8, color: Colors.black45)],
         ),
       ),
     );
