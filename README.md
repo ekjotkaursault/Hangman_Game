@@ -1,110 +1,100 @@
-<<<<<<< HEAD
-#  Guess The Word Game  
-_A Flutter-based Hangman-style word guessing game with sound, animations, and responsive design._
+#  Guess The Word – Flutter Hangman Game
+
+**Live Demo:**  [Play the Game](https://ekjotkaursault.github.io/Hangman_Game/)  
+**Author:** [Ekjot Kaur](https://github.com/ekjotkaursault)
 
 ---
 
-## Overview  
-**Guess The Word** is an interactive and modern word guessing game (similar to Hangman), built using **Flutter**.  
-The player tries to guess a hidden word letter by letter before reaching the maximum number of wrong guesses.  
+##  Overview
+**Guess The Word** is a fun and responsive **Hangman-style** word guessing game created using **Flutter Web**.  
+Players try to uncover a hidden word letter by letter, with a limited number of wrong guesses allowed.  
 
-It features a **colorful animated interface**, **sound effects**, and **motivational messages** after each round.  
-This project demonstrates strong understanding of **state management**, **animations**, **UI responsiveness**, and **user experience design** in Flutter.  
-
----
-
-##  Features  
-1. Smooth and intuitive **gameplay logic** (guess, win, lose, play again)  
-2. **Sound effects** for success and failure (using `audioplayers` package)  
-3. **Animated fade transitions** for motivation messages and results  
-4. **Responsive layout** for web, tablet, and mobile devices  
-5. **Dynamic word generation** using random logic  
-6. **Beautiful UI** with gradients, shadows, and consistent styling  
-7. Motivational quotes to keep the player engaged  
-8. Clean, modular code — easily extendable  
+This project was developed as part of my **Flutter learning and lab work**, where I combined:
+-  creative UI/UX design  
+-  logical game mechanics  
+-  audio integration  
+-  web deployment using GitHub Pages  
 
 ---
 
-## Tech Stack
+##  What I Did ? (My Original Work)
+
+| Area | Description |
+|------|--------------|
+|  **Core Game Logic** | I wrote the full guessing logic in Dart. This includes handling user input, tracking guessed letters, updating wrong attempts, and detecting win/loss conditions. |
+|  **State Management** | I designed the game using a **StatefulWidget**, manually updating game state variables for interactivity (`_guessedLetters`, `_wrongGuesses`, `_wins`, `_losses`). |
+|  **User Interface Design** | I created a modern, colorful UI with gradients, rounded cards, and glowing elements. The layout adapts responsively using `MediaQuery` and `LayoutBuilder`. |
+|  **Animations** | I implemented smooth fade-in animations using `AnimationController` and `FadeTransition` to make result messages appear nicely. |
+|  **Sound System** | I integrated **audioplayers** to add win/lose sounds. I fixed path issues so that sounds play correctly on **GitHub Pages**, not just in local runs. |
+|  **Web Deployment** | I configured Flutter’s web build system with a custom base path and used `git subtree` to deploy the project on the **gh-pages branch**. |
+|  **Documentation (README)** | I wrote this documentation to describe my process, acknowledge sources, and explain what I learned. |
+
+---
+
+##  External Resources Used (for Learning & Reference)
+
+While all **design, logic, and code integration** were created by me,  
+I consulted a few **official and educational resources** to learn new concepts and solve problems.
+
+| Resource | How I Used It |
+|-----------|----------------|
+| [Flutter Documentation](https://flutter.dev/docs) | Learned widget structure, stateful widget usage, and responsive UI building. |
+| [Dart Language Tour](https://dart.dev/language) | Reviewed syntax for loops, conditions, lists, and random selection. |
+| [Audioplayers GitHub Repo](https://github.com/bluefireteam/audioplayers) | Used official docs to understand web audio limitations and implement correct `UrlSource()` for GitHub Pages. |
+| [Flutter.dev – Animations Guide](https://docs.flutter.dev/development/ui/animations) | Learned how to use `AnimationController` and `FadeTransition`. |
+| [Medium Tutorial – Deploy Flutter Web to GitHub Pages](https://medium.com/flutter-community/how-to-deploy-flutter-web-app-to-github-pages-2a8bdc5c6e3e) | Followed steps to build and deploy the Flutter web version correctly. |
+
+>  *I did not copy any game code directly from online sources.*  
+> These materials were only used for **understanding**, then I implemented the logic and styling independently.
+
+---
+
+##  Technologies Used
+
 | Technology | Purpose |
 |-------------|----------|
-| **Flutter (Dart)** | App framework for UI and logic |
-| **audioplayers** | To play sound effects (`success.wav`, `fail.wav`) |
-| **Material Design 3** | For modern UI elements |
-| **AnimationController** | Fade transitions and smooth visual effects |
-| **MediaQuery + LayoutBuilder** | For full responsiveness |
+| **Flutter (3.x)** | Framework used to build UI and logic for web |
+| **Dart** | Programming language used throughout the app |
+| **audioplayers** | Added sound effects for success and failure |
+| **Material Design 3** | Provided consistent visual design |
+| **GitHub Pages** | Used to host the live playable web version |
+| **VS Code** | IDE used for coding, testing, and deployment |
 
 ---
 
-## My Original Work  
+##  Features Implemented by Me
 
-This project was **personally designed and developed** by **Ekjot Kaur** as part of a Flutter Lab (Test 1B).  
-I worked on:
-
--  Creating the **entire UI layout** and color scheme (gradients, shadows, rounded containers)  
--  Writing all the **game logic** (win/lose conditions, wrong guess counting, random word selection)  
--  Integrating **audio feedback** for wins/losses using the `audioplayers` package  
--  Implementing **fade animations** using `AnimationController`  
--  Making the UI **fully responsive** using `MediaQuery` and `LayoutBuilder`  
--  Adding motivational quotes to enhance user engagement  
--  Writing meaningful comments in `main.dart` for clarity and maintainability  
-
----
-
-## External Resources Referenced  
-
-As a learning student, I reviewed **official and educational Flutter resources** to understand syntax, structure, and best practices.  
-I did **not copy** any ready-made projects — only referred to small code snippets for guidance.
-
-Here’s what I used for understanding:
--  [Flutter Official Docs](https://docs.flutter.dev/) — Widget usage, layouts, animations  
--  [Audioplayers Plugin Docs](https://pub.dev/packages/audioplayers) — How to add sound files  
--  [Flutter Layout Examples](https://flutter.dev/docs/development/ui/layout) — Designing flexible layouts  
--  [Dart Language Tour](https://dart.dev/language) — Understanding Dart syntax and collections  
-
-All logic, design, and structure were written **from scratch** by me after learning from these official resources.  
+1. Word guessing logic  
+2. Wrong guess counter and loss condition  
+3. Animated motivational messages  
+4. Gradient + glassmorphic card design  
+5. Success & failure sound playback  
+6. Score tracking (wins and losses)  
+7. Dynamic word generation  
+8. Fully responsive layout (mobile + desktop)  
+9. GitHub Pages live hosting  
 
 ---
 
-## How to Run ?
+##  How to Run This Project
+In the Terminal:
+### Clone Repository
+```bash
+git clone https://github.com/ekjotkaursault/Hangman_Game.git
+cd Hangman_Game
 
-In the Vs Code Terminal:
-# 1. Clone this repository
-git clone https://github.com/ekjotkaursault/Guess_the_word.git
-
-# 2. Navigate to the project folder
-cd Guess_the_word
-
-# 3. Get dependencies
+## Install Dependencies
 flutter pub get
 
-# 4. Run the app
+## Run in Chrome
 flutter run -d chrome
 
-----------------
+## Build for Web (with correct base path)
+flutter build web --base-href="/Hangman_Game/"
 
-**Conclusion**
+## Deploy to GitHub Pages
+git add build/web -f
+git commit -m "Deploy updated web build"
+git subtree push --prefix build/web origin gh-pages
 
-This project reflects both creativity and technical skill — combining UI/UX, state management, and logic design in Flutter.
-It helped me deeply understand how Flutter widgets, layouts, and animations interact together.
 
-Built with 💙 and Flutter by Ekjot Kaur”
-
-=======
-# guess_the_word
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> a2de9aa (Redesigned Guess The Word UI with gradient theme and score tracking)
