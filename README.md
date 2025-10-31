@@ -13,14 +13,14 @@ This project demonstrates strong understanding of **state management**, **animat
 ---
 
 ##  Features  
-✅ Smooth and intuitive **gameplay logic** (guess, win, lose, play again)  
-✅ **Sound effects** for success and failure (using `audioplayers` package)  
-✅ **Animated fade transitions** for motivation messages and results  
-✅ **Responsive layout** for web, tablet, and mobile devices  
-✅ **Dynamic word generation** using random logic  
-✅ **Beautiful UI** with gradients, shadows, and consistent styling  
-✅ Motivational quotes to keep the player engaged  
-✅ Clean, modular code — easily extendable  
+1. Smooth and intuitive **gameplay logic** (guess, win, lose, play again)  
+2. **Sound effects** for success and failure (using `audioplayers` package)  
+3. **Animated fade transitions** for motivation messages and results  
+4. **Responsive layout** for web, tablet, and mobile devices  
+5. **Dynamic word generation** using random logic  
+6. **Beautiful UI** with gradients, shadows, and consistent styling  
+7. Motivational quotes to keep the player engaged  
+8. Clean, modular code — easily extendable  
 
 ---
 
@@ -88,3 +88,4 @@ This project reflects both creativity and technical skill — combining UI/UX, s
 It helped me deeply understand how Flutter widgets, layouts, and animations interact together.
 
 Built with 💙 and Flutter by Ekjot Kaur”
+
