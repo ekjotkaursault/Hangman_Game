@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  Guess The Word Game  
 _A Flutter-based Hangman-style word guessing game with sound, animations, and responsive design._
 
@@ -89,3 +90,21 @@ It helped me deeply understand how Flutter widgets, layouts, and animations inte
 
 Built with 💙 and Flutter by Ekjot Kaur”
 
+=======
+# guess_the_word
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+>>>>>>> a2de9aa (Redesigned Guess The Word UI with gradient theme and score tracking)

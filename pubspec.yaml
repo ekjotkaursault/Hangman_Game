@@ -59,8 +59,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+<<<<<<< HEAD
     - assets/success.wav
     - assets/fail.wav
+=======
+
+  - assets/assets/success.wav
+  - assets/assets/fail.wav
+>>>>>>> a2de9aa (Redesigned Guess The Word UI with gradient theme and score tracking)
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -91,4 +97,8 @@ flutter:
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,
+<<<<<<< HEAD
   # see https://flutter.dev/to/font-from-package
+=======
+  # see https://flutter.dev/to/font-from-package
+>>>>>>> a2de9aa (Redesigned Guess The Word UI with gradient theme and score tracking)
