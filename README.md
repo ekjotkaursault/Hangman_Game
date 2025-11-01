@@ -1,7 +1,8 @@
 #  Guess The Word – Flutter Hangman Game
 
-**Live Demo:**  [Play the Game](https://ekjotkaursault.github.io/Hangman_Game/)  
-**Author:** [Ekjot Kaur](https://github.com/ekjotkaursault)
+**Live Demo:** (https://ekjotkaursault.github.io/Hangman_Game/)  
+**Author** ": Ekjot Kaur
+**Github**: (https://github.com/ekjotkaursault)
 
 ---
 
@@ -96,5 +97,6 @@ flutter build web --base-href="/Hangman_Game/"
 git add build/web -f
 git commit -m "Deploy updated web build"
 git subtree push --prefix build/web origin gh-pages
+
 
 
