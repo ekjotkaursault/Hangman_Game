@@ -1,8 +1,8 @@
 #  Guess The Word – Flutter Hangman Game
 
-**Live Demo**: https://ekjotkaursault.github.io/Hangman_Game/
+**Live Demo**: (https://ekjotkaursault.github.io/Hangman_Game/)
 **Author**: Ekjot Kaur
-**Github**: https://github.com/ekjotkaursault
+**Github**: ( https://github.com/ekjotkaursault)
 
 ---
 
