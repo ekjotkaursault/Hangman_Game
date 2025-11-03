@@ -47,7 +47,7 @@ I consulted a few **official and educational resources** to learn new concepts a
 | [Flutter.dev – Animations Guide](https://docs.flutter.dev/development/ui/animations) | Learned how to use `AnimationController` and `FadeTransition`. |
 | [Medium Tutorial – Deploy Flutter Web to GitHub Pages](https://medium.com/flutter-community/how-to-deploy-flutter-web-app-to-github-pages-2a8bdc5c6e3e) | Followed steps to build and deploy the Flutter web version correctly. |
 
->  *I did not copy any game code directly from online sources.*  
+>  *I did not copy any game code directly from online sources.* But, as Flutter is a new topic, sometimes during any error, i consider using in-built copilot in vscode to find out error and make the code running, i do not copy full code and pasted it . 
 > These materials were only used for **understanding**, then I implemented the logic and styling independently.
 
 ---
@@ -99,6 +99,7 @@ flutter build web --base-href="/Hangman_Game/"
 git add build/web -f
 git commit -m "Deploy updated web build"
 git subtree push --prefix build/web origin gh-pages
+
 
 
 
