@@ -84,7 +84,7 @@ In the Terminal:
 ### Clone Repository
 ```bash
 git clone https://github.com/ekjotkaursault/Hangman_Game.git
-cd Hangman_Game
+cd guess_the_word
 
 ## Install Dependencies
 flutter pub get
@@ -99,6 +99,7 @@ flutter build web --base-href="/Hangman_Game/"
 git add build/web -f
 git commit -m "Deploy updated web build"
 git subtree push --prefix build/web origin gh-pages
+
 
 
 
