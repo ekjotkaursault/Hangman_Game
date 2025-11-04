@@ -1,4 +1,4 @@
-// 🎮 Guess The Word Game (Responsive Version)
+//  Guess The Word Game (Responsive Version)
 // Author: Ekjot Kaur
 // Description: A Flutter-based hangman-style guessing game with animations,
 // motivational messages, and responsive UI for web & mobile. Features dynamic
@@ -12,7 +12,7 @@ void main() {
   runApp(const GuessWordApp());
 }
 
-// 🌟 Root widget of the app
+//  Root widget of the app
 class GuessWordApp extends StatelessWidget {
   const GuessWordApp({super.key});
 
@@ -27,7 +27,7 @@ class GuessWordApp extends StatelessWidget {
   }
 }
 
-// 🧠 Main StatefulWidget: manages logic, user interaction, and animations
+//  Main StatefulWidget: manages logic, user interaction, and animations
 class GuessWordGame extends StatefulWidget {
   const GuessWordGame({super.key});
 
@@ -35,12 +35,11 @@ class GuessWordGame extends StatefulWidget {
   State<GuessWordGame> createState() => _GuessWordGameState();
 }
 
-// 🎯 State class implementing all gameplay logic
+//  State class implementing all gameplay logic
 class _GuessWordGameState extends State<GuessWordGame>
     with SingleTickerProviderStateMixin {
   // --- WORD BANK (random selection each round) ---
   final List<String> _words = [
-    'FLUTTER',
     'APPLE',
     'BANANA',
     'ORANGE',
@@ -82,7 +81,7 @@ class _GuessWordGameState extends State<GuessWordGame>
   void initState() {
     super.initState();
 
-    // 🎬 Initialize animation controller for fade-in result text
+    //  Initialize animation controller for fade-in result text
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 800),
@@ -95,7 +94,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     _resetGame();
   }
 
-  // 🔁 Resets game for a new round
+  //  Resets game for a new round
   void _resetGame() {
     setState(() {
       _selectedWord = _words[Random().nextInt(_words.length)];
@@ -108,7 +107,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     });
   }
 
-  // 🅰️ Handles letter button press by player
+  //  Handles letter button press by player
   void _guessLetter(String letter) {
     // Ignore if already guessed or round ended
     if (_guessedLetters.contains(letter) || _gameOver) return;
@@ -139,7 +138,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     });
   }
 
-  // 🔊 Play sound (from assets folder)
+  //  Play sound (from assets folder)
   Future<void> _playSound(String fileName) async {
     await _player.play(AssetSource(fileName));
   }
@@ -148,7 +147,7 @@ class _GuessWordGameState extends State<GuessWordGame>
   bool get _isWinner =>
       _selectedWord.split('').every((letter) => _guessedLetters.contains(letter));
 
-  // 💀 Lose condition → max wrong guesses reached
+  //  Lose condition → max wrong guesses reached
   bool get _isLoser => _wrongGuesses >= _maxWrongGuesses;
 
   @override
@@ -185,7 +184,7 @@ class _GuessWordGameState extends State<GuessWordGame>
               vertical: isSmallScreen ? 10 : 20,
             ),
             child: Container(
-              // 🧩 Card container for main content
+              //  Card container for main content
               width: isSmallScreen ? size.width * 0.95 : 450,
               padding: EdgeInsets.symmetric(
                 vertical: isSmallScreen ? 20 : 35,
@@ -204,7 +203,7 @@ class _GuessWordGameState extends State<GuessWordGame>
                 ],
               ),
 
-              // --- 📜 MAIN COLUMN CONTENT ---
+              // ---  MAIN COLUMN CONTENT ---
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -242,7 +241,7 @@ class _GuessWordGameState extends State<GuessWordGame>
 
                   const SizedBox(height: 6),
 
-                  // 🧩 Already guessed letters
+                  //  Already guessed letters
                   Text(
                     'Guessed: ${_guessedLetters.join(', ')}',
                     textAlign: TextAlign.center,
@@ -254,7 +253,7 @@ class _GuessWordGameState extends State<GuessWordGame>
                   ),
                   const SizedBox(height: 25),
 
-                  // --- 🎬 GAME RESULT AREA ---
+                  // ---  GAME RESULT AREA ---
                   if (_gameOver)
                     FadeTransition(
                       opacity: _fadeAnimation,
@@ -302,7 +301,7 @@ class _GuessWordGameState extends State<GuessWordGame>
 
                           const SizedBox(height: 15),
 
-                          // 🌟 Motivational quote
+                          //  Motivational quote
                           Text(
                             _motivation,
                             textAlign: TextAlign.center,
@@ -315,7 +314,7 @@ class _GuessWordGameState extends State<GuessWordGame>
 
                           const SizedBox(height: 25),
 
-                          // ✅ Button changes text and color dynamically
+                          //  Button changes text and color dynamically
                           ElevatedButton(
                             onPressed: _resetGame, // Resets or loads next word
                             style: ElevatedButton.styleFrom(
@@ -341,7 +340,7 @@ class _GuessWordGameState extends State<GuessWordGame>
                         ],
                       ),
                     )
-                  // --- ⌨️ ACTIVE GAME KEYBOARD ---
+                  // ---  ACTIVE GAME KEYBOARD ---
                   else
                     Column(
                       children: [
@@ -392,7 +391,7 @@ class _GuessWordGameState extends State<GuessWordGame>
                   const SizedBox(height: 25),
                   const Divider(color: Colors.white24, thickness: 1, height: 20),
 
-                  // 👩‍💻 Footer credit
+                  //  Footer credit
                   const Text(
                     "Made with 💙 in Flutter by Ekjot Kaur",
                     style: TextStyle(
@@ -410,7 +409,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     );
   }
 
-  // 🏅 SCOREBOARD WIDGET
+  //  SCOREBOARD WIDGET
   Widget _buildScoreRow(bool isSmall) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
@@ -430,7 +429,7 @@ class _GuessWordGameState extends State<GuessWordGame>
     );
   }
 
-  // 🔠 WORD DISPLAY SECTION
+  // WORD DISPLAY SECTION
   Widget _buildWordDisplay(String displayWord, bool isSmall) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
