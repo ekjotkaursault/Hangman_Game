@@ -16,7 +16,7 @@ Players try to uncover a hidden word letter by letter, with a limited number of 
 This project was developed as part of my **Flutter learning and lab work**, where I combined:
 -  creative UI/UX design  
 -  logical game mechanics  
--  audio integration  
+-  audio integration  (GitHub Pages build may mute audio due to browser restrictions)
 -  web deployment using GitHub Pages  
 
 ---
